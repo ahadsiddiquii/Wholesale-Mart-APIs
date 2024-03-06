@@ -23,12 +23,19 @@ app.use(baseServer + "order", orderRouter);
 // Category Service
 const categoryRouter =
   require("./lib/routes/category/category_service").category;
-  app.use(baseServer + "category", categoryRouter);
+app.use(baseServer + "category", categoryRouter);
 
 // Loyalty Points Service
 const loyaltyRouter = require("./lib/routes/loyalty/loyalty_service").loyalty;
 app.use(baseServer + "loyalty", loyaltyRouter);
 
+// Vendor Service
+const vendorRouter = require("./lib/routes/vendor/vendor_service").vendor;
+app.use(baseServer + "vendor", vendorRouter);
+
+// Cart Service
+const cartRouter = require("./lib/routes/cart/cart_service").cart;
+app.use(baseServer + "cart", cartRouter);
 
 app.listen(port, () => {
   console.log(`API Gateway is running at http://localhost:${port}`);
