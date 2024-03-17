@@ -1,5 +1,5 @@
+require('dotenv').config();
 const express = require("express");
-
 const ResponseHandler = require("./lib/generic/response/response_handler");
 
 const app = express();
@@ -37,6 +37,11 @@ app.use(baseServer + "vendor", vendorRouter);
 const cartRouter = require("./lib/routes/cart/cart_service").cart;
 app.use(baseServer + "cart", cartRouter);
 
+// Dashboard Service
+const dashboardRouter =
+  require("./lib/routes/dashboard/dashboard_service").dashboard;
+app.use(baseServer + "dashboard", dashboardRouter);
+
 app.listen(port, () => {
   console.log(`API Gateway is running at http://localhost:${port}`);
 });
@@ -56,3 +61,4 @@ app.get("/server-status", (req, res) => {
   console.log(result);
   res.json(result);
 });
+
